@@ -1,2 +1,5 @@
-numerical_methods_lr3
+Methods of solving continuous functions
 =====================
+
+* Bisection method
+* Newton's method
