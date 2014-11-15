@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Function #1
+ * Function #1 SK
  *
  * @param  {Number} x - x point
  * @return {Number}   - y point
@@ -11,7 +11,7 @@ function funcOne(x) {
 }
 
 /**
- * Derivative of Function #1
+ * Derivative of Function #1 SK
  *
  * @param  {Number} x - x point
  * @return {Number}   - y point
@@ -19,6 +19,42 @@ function funcOne(x) {
 function derivativeOffuncOne(x) {
   return Math.pow(Math.E, (0.8 * x)) * (0.8 * x + 1);
 }
+
+/**
+ * Function #2 JN
+ * @param  {Number} x - x point
+ * @return {Number}   - y point
+ */
+function funcTwo(x) {
+  return (Math.pow(Math.log(x), 3) / Math.pow(x, 2)) - 18;
+}
+
+/**
+ * Derivative of function #2 JN
+ * @param  {Number} x - x point
+ * @return {Number}   - y point
+ */
+function derivativeOffuncTwo(x) {
+  return ((3 - 2 * Math.log(x)) * Math.pow(Math.log(x), 2)) / Math.pow(x, 3);
+}
+
+/**
+ * Function #3 DI
+ * @param  {Number} x - x point
+ * @return {Number}   - y point
+ */
+function funcThree(x) {
+  return Math.pow(2, (3 * x)) - 18;
+}
+
+/**
+ * Derivative of function #3 DI
+ * @param  {Number} x - x point
+ * @return {Number}   - y point
+ */
+ function derivativeOffuncThree(x) {
+  return Math.pow(8, x) * Math.log(8);
+ }
 
 /**
  * Check interval
@@ -69,4 +105,61 @@ function newtonLocal(functionName, a, b, e) {
 
     return false;
   }
+}
+
+function printTableForNewton() {
+  /** Function one */
+  var fres1 = katex.renderToString("e^{2x} sin(x) - 13");
+  var res1 = newtonLocal('funcOne', -1, 3, 0.01);
+  var res11 = newtonLocal('funcOne', -1, 3, 0.0001);
+
+  /** Function two */
+  var fres2 = katex.renderToString("(ln^3 x) / x^2 - 18");
+  var res2 = newtonLocal('funcTwo', -1, 3, 0.01);
+  var res22 = newtonLocal('funcTwo', -1, 3, 0.0001);
+
+  /** Function three */
+  var fres3 = katex.renderToString("2^{3x} - 18");
+  var res3 = newtonLocal('funcThree', 0, 3, 0.01);
+  var res33 = newtonLocal('funcThree', 0, 3, 0.0001);
+
+  var html = '<h1>Newton table</h1>';
+  html += '<table class="table table-bordered"><thead><tr>'
+       + '<th>Function number</th><th>Accuracy</th><th>Root</th><th>Iterations</th>'
+       + '</tr></thead>';
+  html += '<tbody><tr>'
+       + '<td rowspan="2">' + fres1 + '</td>'
+       + '<td>e = 0.01</td>'
+       + '<td>x = ' + res1[res1.length - 1] + '</td>'
+       + '<td>' + res1.length + '</td>'
+       + '</tr>';
+  html += '<tr>'
+       + '<td>e = 0.0001</td>'
+       + '<td>x = ' + res11[res11.length - 1] + '</td>'
+       + '<td>' + res11.length + '</td>'
+       + '</tr>';
+  html += '<tr>'
+       + '<td rowspan="2">' + fres2 +'</td>'
+       + '<td>e = 0.01</td>'
+       + '<td>x = ' + res2[res2.length - 1] + '</td>'
+       + '<td>' + res2.length + '</td>'
+       + '</tr>';
+  html += '<tr>'
+       + '<td>e = 0.0001</td>'
+       + '<td>x = ' + res22[res22.length - 1] + '</td>'
+       + '<td>' + res22.length + '</td>'
+       + '</tr>';
+  html += '<tr>'
+       + '<td rowspan="2">' + fres3 + '</td>'
+       + '<td>e = 0.01</td>'
+       + '<td>x = ' + res3[res3.length - 1] + '</td>'
+       + '<td>' + res3.length + '</td>'
+       + '</tr>';
+  html += '<tr>'
+       + '<td>e = 0.0001</td>'
+       + '<td>x = ' + res33[res33.length - 1] + '</td>'
+       + '<td>' + res33.length + '</td>'
+       + '</tr>';
+  html += '</table>';
+  document.getElementById('newton').innerHTML = html;
 }
