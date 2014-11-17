@@ -6,12 +6,49 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.1.1/katex.min.css">
+    <style>
+        .demo-container {
+        box-sizing: border-box;
+        width: 850px;
+        height: 450px;
+        padding: 20px 15px 15px 15px;
+        margin: 15px auto 30px auto;
+        border: 1px solid #ddd;
+        background: #fff;
+        background: linear-gradient(#f6f6f6 0, #fff 50px);
+        background: -o-linear-gradient(#f6f6f6 0, #fff 50px);
+        background: -ms-linear-gradient(#f6f6f6 0, #fff 50px);
+        background: -moz-linear-gradient(#f6f6f6 0, #fff 50px);
+        background: -webkit-linear-gradient(#f6f6f6 0, #fff 50px);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        -o-box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        -ms-box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        -moz-box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        -webkit-box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .demo-placeholder {
+        width: 100%;
+        height: 100%;
+        font-size: 14px;
+        line-height: 1.2em;
+    }
+    </style>
 </head>
 
 <body>
     <div class="container">
         <!-- div's for output put here -->
-        <div id="newton">
+        <div class="demo-container">
+            <div id="newtongraph1" class="demo-placeholder"></div>
+        </div>
+        <div class="demo-container">
+            <div id="newtongraph2" class="demo-placeholder"></div>
+        </div>
+        <div class="demo-container">
+            <div id="newtongraph3" class="demo-placeholder"></div>
+        </div>
+        <div id="newton"></div>
     </div>
     <!-- All necessary scripts go here -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -22,6 +59,24 @@
     <!-- / All necessary scripts go here -->
     <script>
         printTableForNewton();
+
+        /** data for first Newton graph */
+        var newtonData1 = [];
+        newtonData1.push({
+            data: [
+                [0, res1[res1.length - 1]],
+                [0, res11[res11.length - 1]]
+                ],
+            points: {
+                show: true
+            }
+        });
+        newtonData1.push(getPoints(1));
+
+        /** Initialize all graphs */
+        $(document).ready(function() {
+            $.plot("#newtongraph1", newtonData1);
+        });
     </script>
 </body>
 

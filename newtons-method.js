@@ -107,22 +107,25 @@ function newtonLocal(functionName, a, b, e) {
   }
 }
 
+/** Function one */
+var fres1 = katex.renderToString("e^{2x} sin(x) - 13");
+var res1 = newtonLocal('funcOne', -1, 3, 0.01);
+var res11 = newtonLocal('funcOne', -1, 3, 0.0001);
+
+/** Function two */
+var fres2 = katex.renderToString("(ln^3 x) / x^2 - 18");
+var res2 = newtonLocal('funcTwo', -3, 3, 0.01);
+var res22 = newtonLocal('funcTwo', -3, 3, 0.0001);
+
+/** Function three */
+var fres3 = katex.renderToString("2^{3x} - 18");
+var res3 = newtonLocal('funcThree', 0, 3, 0.01);
+var res33 = newtonLocal('funcThree', 0, 3, 0.0001);
+
+/**
+ * Print table for Newton
+ */
 function printTableForNewton() {
-  /** Function one */
-  var fres1 = katex.renderToString("e^{2x} sin(x) - 13");
-  var res1 = newtonLocal('funcOne', -1, 3, 0.01);
-  var res11 = newtonLocal('funcOne', -1, 3, 0.0001);
-
-  /** Function two */
-  var fres2 = katex.renderToString("(ln^3 x) / x^2 - 18");
-  var res2 = newtonLocal('funcTwo', -1, 3, 0.01);
-  var res22 = newtonLocal('funcTwo', -1, 3, 0.0001);
-
-  /** Function three */
-  var fres3 = katex.renderToString("2^{3x} - 18");
-  var res3 = newtonLocal('funcThree', 0, 3, 0.01);
-  var res33 = newtonLocal('funcThree', 0, 3, 0.0001);
-
   var html = '<h1>Newton table</h1>';
   html += '<table class="table table-bordered"><thead><tr>'
        + '<th>Function number</th><th>Accuracy</th><th>Root</th><th>Iterations</th>'
@@ -162,4 +165,28 @@ function printTableForNewton() {
        + '</tr>';
   html += '</table>';
   document.getElementById('newton').innerHTML = html;
+}
+
+function getPoints(number) {
+  var arr = [];
+  switch(number) {
+    case 1:
+      for(var y = -1; y <= 3; y += 0.5) {
+        arr.push([y, funcOne(y)]);
+      }
+      return arr;
+    case 2:
+      for(var y = -3; y <= 3; y += 0.5) {
+        arr.push([y, funcTwo(y)]);
+      }
+      return arr;
+      break;
+    case 3:
+      for(var y = 0; y <= 3; y += 0.5) {
+        arr.push([y, funcThree(y)]);
+      }
+      return arr;
+    default:
+      return [];
+  }
 }
