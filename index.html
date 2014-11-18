@@ -48,7 +48,12 @@
         <div class="demo-container">
             <div id="newtongraph3" class="demo-placeholder"></div>
         </div>
+		<div class="demo-container">
+            <div id="bisectionGraphs" class="demo-placeholder"></div>
+			<div id="chartLegend"></div>
+        </div>
         <div id="newton"></div>
+		<div id="bisection"></div>
     </div>
     <!-- All necessary scripts go here -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -59,6 +64,7 @@
     <!-- / All necessary scripts go here -->
     <script>
         printTableForNewton();
+		outpuResult();
 
         /** data for first Newton graph */
         var newtonData1 = [];
@@ -72,10 +78,31 @@
             }
         });
         newtonData1.push(getPoints(1));
-
+		
+		//bisection graph data
+		var bisectionData = [];
+		bisectionData.push({
+			data: [
+                [0, bisection('log', 1, 5, 0.01)[0]],
+                [0, bisection('log', 1, 5, 0.0001)[0]]
+            ],
+			points: {
+				show: true
+			},
+			legend: { 
+				show: true,
+				noColumns: 3,
+				container : $('#chartLegend')
+			}
+		});
+		bisectionData.push({label:'Exponential', color:'green', data: getPoints(1)});
+		bisectionData.push({label:'Logarithmic', color:'red', data: getPoints(2)});
+		bisectionData.push({label:'Squares', color:'blue', data: getPoints(3)});
+		
         /** Initialize all graphs */
         $(document).ready(function() {
             $.plot("#newtongraph1", newtonData1);
+            $.plot("#bisectionGraphs", bisectionData);
         });
     </script>
 </body>
