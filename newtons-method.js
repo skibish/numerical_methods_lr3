@@ -99,10 +99,9 @@ function newtonLocal(functionName, a, b, e) {
     while(Math.abs(x[i + 1] - x[i]) > e) {
       c = 1;
       i++;
-      x.push(x[i] - functionName(x[i]) / derivative(x[i]));
 
-      var tmp = x[i+1];
-      while(Math.abs(functionName(tmp) >= functionName(x[i]))) {
+      var tmp = x[i] - functionName(x[i]) / derivative(x[i]);
+      while(Math.abs(functionName(tmp)) >= Math.abs(functionName(x[i]))) {
         c = c / 2;
         tmp = x[i] - c * (functionName(x[i]) / derivative(x[i]) );
       }
