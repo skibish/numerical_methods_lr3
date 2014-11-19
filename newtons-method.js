@@ -90,13 +90,24 @@ function newtonLocal(functionName, a, b, e) {
 
     x.push((a + b) / 2);
 
+    /** @param {Number} c - coefficient */
+    var c;
     var i = 0;
 
     x.push(x[i] - functionName(x[i]) / derivative(x[i]));
 
-    while (Math.abs(x[i + 1] - x[i]) > e) {
+    while(Math.abs(x[i + 1] - x[i]) > e) {
+      c = 1;
       i++;
       x.push(x[i] - functionName(x[i]) / derivative(x[i]));
+
+      var tmp = x[i+1];
+      while(Math.abs(functionName(tmp) >= functionName(x[i]))) {
+        c = c / 2;
+        tmp = x[i] - c * (functionName(x[i]) / derivative(x[i]) );
+      }
+      x.push(tmp);
+
     }
 
     return x;
