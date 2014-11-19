@@ -138,7 +138,7 @@ var res33 = newtonLocal('funcThree', 0, 3, 0.0001);
 function printTableForNewton() {
   var html = '<h1>Newton table</h1>';
   html += '<table class="table table-bordered"><thead><tr>'
-       + '<th>Function number</th><th>Accuracy</th><th>Root</th><th>Iterations</th>'
+       + '<th>Function</th><th>Accuracy</th><th>Root</th><th>Iterations</th>'
        + '</tr></thead>';
   html += '<tbody><tr>'
        + '<td rowspan="2">' + fres1 + '</td>'
