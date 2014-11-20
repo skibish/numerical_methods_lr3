@@ -26,7 +26,7 @@ function derivativeOffuncOne(x) {
  * @return {Number}   - y point
  */
 function funcTwo(x) {
-  return (Math.pow(Math.log(x), 3) / Math.pow(x, 2)) - 18;
+  return (Math.pow(Math.log(x), 3) / Math.pow(x, 2));
 }
 
 /**
