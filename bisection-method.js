@@ -61,7 +61,7 @@ function outpuResult() {
 	
 	var html = '<h1>Bisection table</h1>';
 		html += '<table class="table table-bordered"><thead><tr>'
-			+ '<th>Function number</th><th>Accuracy</th><th>Root</th><th>Iterations</th>'
+			+ '<th>Function</th><th>Accuracy</th><th>Root</th><th>Iterations</th>'
 			+ '</tr></thead>';
 		html += '<tbody><tr>';
 		

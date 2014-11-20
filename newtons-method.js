@@ -90,13 +90,23 @@ function newtonLocal(functionName, a, b, e) {
 
     x.push((a + b) / 2);
 
+    /** @param {Number} c - coefficient */
+    var c;
     var i = 0;
 
     x.push(x[i] - functionName(x[i]) / derivative(x[i]));
 
-    while (Math.abs(x[i + 1] - x[i]) > e) {
+    while(Math.abs(x[i + 1] - x[i]) > e) {
+      c = 1;
       i++;
-      x.push(x[i] - functionName(x[i]) / derivative(x[i]));
+
+      var tmp = x[i] - functionName(x[i]) / derivative(x[i]);
+      while(Math.abs(functionName(tmp)) >= Math.abs(functionName(x[i]))) {
+        c = c / 2;
+        tmp = x[i] - c * (functionName(x[i]) / derivative(x[i]) );
+      }
+      x.push(tmp);
+
     }
 
     return x;
@@ -106,6 +116,9 @@ function newtonLocal(functionName, a, b, e) {
     return false;
   }
 }
+
+var sxi = katex.renderToString("\\xi = ");
+var sx = katex.renderToString("x = ");
 
 /** Function one */
 var fres1 = katex.renderToString("e^{2x} sin(x) - 13");
@@ -128,39 +141,39 @@ var res33 = newtonLocal('funcThree', 0, 3, 0.0001);
 function printTableForNewton() {
   var html = '<h1>Newton table</h1>';
   html += '<table class="table table-bordered"><thead><tr>'
-       + '<th>Function number</th><th>Accuracy</th><th>Root</th><th>Iterations</th>'
+       + '<th>Function</th><th>Accuracy</th><th>Root</th><th>Iterations</th>'
        + '</tr></thead>';
   html += '<tbody><tr>'
-       + '<td rowspan="2">' + fres1 + '</td>'
-       + '<td>e = 0.01</td>'
-       + '<td>x = ' + res1[res1.length - 1] + '</td>'
+       + '<td rowspan="2" style="text-align: center; padding: 2% 0;">' + fres1 + '</td>'
+       + '<td>'+ sxi + '0.01</td>'
+       + '<td>'+ sx + res1[res1.length - 1] + '</td>'
        + '<td>' + res1.length + '</td>'
        + '</tr>';
   html += '<tr>'
-       + '<td>e = 0.0001</td>'
-       + '<td>x = ' + res11[res11.length - 1] + '</td>'
+       + '<td>'+ sxi + '0.0001</td>'
+       + '<td>'+ sx + res11[res11.length - 1] + '</td>'
        + '<td>' + res11.length + '</td>'
        + '</tr>';
   html += '<tr>'
-       + '<td rowspan="2">' + fres2 +'</td>'
-       + '<td>e = 0.01</td>'
-       + '<td>x = ' + res2[res2.length - 1] + '</td>'
+       + '<td rowspan="2" style="text-align: center; padding: 2% 0;">' + fres2 +'</td>'
+       + '<td>'+ sxi + '0.01</td>'
+       + '<td>'+ sx + res2[res2.length - 1] + '</td>'
        + '<td>' + res2.length + '</td>'
        + '</tr>';
   html += '<tr>'
-       + '<td>e = 0.0001</td>'
-       + '<td>x = ' + res22[res22.length - 1] + '</td>'
+       + '<td>'+ sxi +'0.0001</td>'
+       + '<td>'+ sx + res22[res22.length - 1] + '</td>'
        + '<td>' + res22.length + '</td>'
        + '</tr>';
   html += '<tr>'
-       + '<td rowspan="2">' + fres3 + '</td>'
-       + '<td>e = 0.01</td>'
-       + '<td>x = ' + res3[res3.length - 1] + '</td>'
+       + '<td rowspan="2" style="text-align: center; padding: 2% 0;">' + fres3 + '</td>'
+       + '<td>'+ sxi +'0.01</td>'
+       + '<td>'+ sx + res3[res3.length - 1] + '</td>'
        + '<td>' + res3.length + '</td>'
        + '</tr>';
   html += '<tr>'
-       + '<td>e = 0.0001</td>'
-       + '<td>x = ' + res33[res33.length - 1] + '</td>'
+       + '<td>'+ sxi +'0.0001</td>'
+       + '<td>'+ sx + res33[res33.length - 1] + '</td>'
        + '<td>' + res33.length + '</td>'
        + '</tr>';
   html += '</table>';

@@ -39,6 +39,7 @@
 <body>
     <div class="container">
         <!-- div's for output put here -->
+        <h3 style="text-align: center;">Solved with Newton method</h3>
         <div class="demo-container">
             <div id="newtongraph1" class="demo-placeholder"></div>
         </div>
@@ -48,6 +49,7 @@
         <div class="demo-container">
             <div id="newtongraph3" class="demo-placeholder"></div>
         </div>
+        <h3 style="text-align: center;">Solved with Bisection method</h3>
 		<div class="demo-container">
             <div id="bisectionGraphs" class="demo-placeholder"></div>
 			<div id="chartLegend"></div>
@@ -70,14 +72,49 @@
         var newtonData1 = [];
         newtonData1.push({
             data: [
-                [0, res1[res1.length - 1]],
-                [0, res11[res11.length - 1]]
+                [res1[res1.length - 1], 0],
+                [res11[res11.length - 1, 0]]
                 ],
             points: {
                 show: true
+            },
+            legend: { 
+                show: true
             }
         });
-        newtonData1.push(getPoints(1));
+        newtonData1.push({label: fres1, color:'green', data: getPoints(1)});
+
+        /** data for second Newton graph */
+        var newtonData2 = [];
+        newtonData2.push({
+            data: [
+                [res2[res2.length - 1], 0],
+                [res22[res22.length - 1, 0]]
+                ],
+            points: {
+                show: true
+            },
+            legend: { 
+                show: true
+            }
+        });
+        newtonData2.push({label: fres2, color:'blue', data: getPoints(2)});
+
+        /** data for third Newton graph */
+        var newtonData3 = [];
+        newtonData3.push({
+            data: [
+                [res3[res3.length - 1], 0],
+                [res33[res33.length - 1, 0]]
+                ],
+            points: {
+                show: true
+            },
+            legend: { 
+                show: true
+            }
+        });
+        newtonData3.push({label: fres3, color:'red', data: getPoints(3)});
 		
 		//bisection graph data
 		var bisectionData = [];
@@ -102,6 +139,8 @@
         /** Initialize all graphs */
         $(document).ready(function() {
             $.plot("#newtongraph1", newtonData1);
+            $.plot("#newtongraph2", newtonData2);
+            $.plot("#newtongraph3", newtonData3);
             $.plot("#bisectionGraphs", bisectionData);
         });
     </script>
