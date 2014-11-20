@@ -88,7 +88,7 @@ function newtonLocal(functionName, a, b, e) {
     var derivative = window[dname];
     var x = [];
 
-    if(functionName = 'funcTwo'){
+    if(functionName == 'funcTwo'){
       x.push(2);
     } else {
       x.push((a+b) / 2);
