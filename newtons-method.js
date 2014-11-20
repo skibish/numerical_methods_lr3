@@ -88,7 +88,11 @@ function newtonLocal(functionName, a, b, e) {
     var derivative = window[dname];
     var x = [];
 
-    x.push((a + b) / 2);
+    if(funcName = 'funcTwo'){
+      x.push(2);
+    } else {
+      x.push((a+b) / 2);
+    }
 
     /** @param {Number} c - coefficient */
     var c;
@@ -184,18 +188,18 @@ function getPoints(number) {
   var arr = [];
   switch(number) {
     case 1:
-      for(var y = -1; y <= 3; y += 0.5) {
+      for(var y = -1; y <= 3; y += 0.01) {
         arr.push([y, funcOne(y)]);
       }
       return arr;
     case 2:
-      for(var y = -3; y <= 3; y += 0.5) {
+      for(var y = 0.5; y <= 1.5; y += 0.01) {
         arr.push([y, funcTwo(y)]);
       }
       return arr;
       break;
     case 3:
-      for(var y = 0; y <= 3; y += 0.5) {
+      for(var y = 0; y <= 3; y += 0.01) {
         arr.push([y, funcThree(y)]);
       }
       return arr;
