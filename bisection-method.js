@@ -11,7 +11,7 @@ function expFunc(x) {
  *
  */
 function logFunc(x) {
-	return (Math.pow(Math.log(x), 3) / Math.pow(x, 2)) - 18;
+	return (Math.pow(Math.log(x), 3) / Math.pow(x, 2));
 }
 
 /*
@@ -106,18 +106,18 @@ function getYpoints(number) {
 	
 	switch(number) {
 		case 1:
-			for(var y = -1; y <= 3; y += 0.5) {
+			for(var y = -1; y <= 3; y += 0.1) {
 				points.push([y, expFunc(y)]);
 			}
 			return points;
 		case 2:
-			for(var y = 1; y <= 15; y += 0.5) {
+			for(var y = 0.5; y <= 1.5; y += 0.01) {
 				points.push([y, logFunc(y)]);
 			}
 			return points;
 		break;
 		case 3:
-			for(var y = 0; y <= 3; y += 0.5) {
+			for(var y = 0; y <= 3; y += 0.1) {
 				points.push([y, squareFunc(y)]);
 			}
 			return points;

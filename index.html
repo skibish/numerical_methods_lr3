@@ -128,8 +128,8 @@
 		var bisectionData = [];
 		bisectionData.push({
 			data: [
-                [0, bisection('exp', -1, 3, 0.01)[0]],
-                [0, bisection('exp', -1, 3, 0.0001)[0]]
+                [bisection('exp', -1, 3, 0.01)[0], 0],
+                [bisection('exp', -1, 3, 0.0001)[0], 0]
             ],
 			points: {
 				show: true
@@ -140,13 +140,13 @@
 				container : $('#chartLegend')
 			}
 		});
-		bisectionData.push({label:'Exponential', color:'green', data: getPoints(1)});
+		bisectionData.push({label:'Exponential', color:'green', data: getYpoints(1)});
 		
 		var bisectionData2 = [];
 		bisectionData2.push({
 			data: [
-                [0, bisection('log', 1, 5, 0.01)[0]],
-                [0, bisection('log', 1, 5, 0.0001)[0]]
+                [bisection('log', 0, 2, 0.01)[0], 0],
+                [bisection('log', 0, 2, 0.0001)[0], 0]
             ],
 			points: {
 				show: true
@@ -157,13 +157,13 @@
 				container : $('#chartLegend2')
 			}
 		});
-		bisectionData2.push({label:'Logarithmic', color:'red', data: getPoints(2)});
+		bisectionData2.push({label:'Logarithmic', color:'red', data: getYpoints(2)});
 		
 		var bisectionData3 = [];
 		bisectionData3.push({
 			data: [
-                [0, bisection('square', 0, 3, 0.01)[0]],
-                [0, bisection('square', 0, 3, 0.0001)[0]]
+                [bisection('square', 0, 3, 0.01)[0], 0],
+                [bisection('square', 0, 3, 0.0001)[0], 0]
             ],
 			points: {
 				show: true
@@ -174,7 +174,7 @@
 				container : $('#chartLegend2')
 			}
 		});
-		bisectionData3.push({label:'Squares', color:'blue', data: getPoints(3)});
+		bisectionData3.push({label:'Squares', color:'blue', data: getYpoints(3)});
 		
         /** Initialize all graphs */
         $(document).ready(function() {
