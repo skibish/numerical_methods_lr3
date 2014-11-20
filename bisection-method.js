@@ -30,6 +30,16 @@ function squareFunc(x) {
 function bisection(name, a, b, E) {
 	var functionName = window[name+'Func'], result;
 	
+	var bN = 5;
+	var aN = -5;
+	for(var i=aN, j=i+1; j<= bN; i+=1, j=i+1) {
+		if(functionName(i) * functionName(j) <= 0) {
+			a = i;
+			b = j;
+			break;
+		}
+	}
+	
 	if(functionName(a) * functionName(b) <= 0) {
 		var iteration = 0, x;
 		
