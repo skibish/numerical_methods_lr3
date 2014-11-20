@@ -11,7 +11,7 @@ function expFunc(x) {
  *
  */
 function logFunc(x) {
-	return (Math.pow(Math.log(x), 3) / Math.pow(x, 2));
+	return (Math.pow(Math.log(x), 3) / Math.pow(x, 2)) - 18;
 }
 
 /*
