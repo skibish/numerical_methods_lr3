@@ -130,9 +130,9 @@ var res1 = newtonLocal('funcOne', -1, 3, 0.01);
 var res11 = newtonLocal('funcOne', -1, 3, 0.0001);
 
 /** Function two */
-var fres2 = katex.renderToString("(ln^3 x) / x^2 - 18");
-var res2 = newtonLocal('funcTwo', -3, 3, 0.01);
-var res22 = newtonLocal('funcTwo', -3, 3, 0.0001);
+var fres2 = katex.renderToString("(ln^3 x) / x^2");
+var res2 = newtonLocal('funcTwo', 0.5, 2, 0.01);
+var res22 = newtonLocal('funcTwo', 0.5, 2, 0.0001);
 
 /** Function three */
 var fres3 = katex.renderToString("2^{3x} - 18");
