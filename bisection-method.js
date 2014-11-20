@@ -85,7 +85,7 @@ function outpuResult() {
 					katexFunction = katex.renderToString("e^{2x} sin(x) - 13");
 				break;
 				case 1:
-					katexFunction = katex.renderToString("(ln^3 x) / x^2 - 18");
+					katexFunction = katex.renderToString("(ln^3 x) / x^2");
 				break;
 				case 2:
 					katexFunction = katex.renderToString("2^{3x} - 18");
